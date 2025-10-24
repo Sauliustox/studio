@@ -1,0 +1,28 @@
+{
+  "app": {
+    "title": "FinRag'as",
+    "description": "An intelligent tool for searching insurance dispute resolutions."
+  },
+  "chat": {
+    "title": "FinRag'as",
+    "subtitle": "Intelligent insurance decision search tool",
+    "sessionId": "Session ID",
+    "initialMessage": "Hello! I am a large language model, trained by Google. My main function is to help you resolve disputes between clients and insurance companies, based on the documents of disputes resolved by the **Bank of Lithuania**. How can I help you?",
+    "inputPlaceholder": "Enter a message...",
+    "send": "Send",
+    "agentTyping": "Agent is typing"
+  },
+  "error": {
+    "webhookConfig": "Webhook URL or authorization key is not defined in environment variables.",
+    "serverConfig": "Server configuration error.",
+    "webhookError": "Webhook error:",
+    "webhookResponseError": "The data source responded with an error:",
+    "emptyResponse": "Received an empty response from the agent.",
+    "sendMessage": "Error sending message:",
+    "parsingError": "Failed to process server response.",
+    "connectionError": "Failed to connect to the data source.",
+    "genericError": "An error occurred",
+    "emptyAnswer": "Sorry, I received a response, but it was empty.",
+    "processingError": "Sorry, your request could not be processed."
+  }
+}

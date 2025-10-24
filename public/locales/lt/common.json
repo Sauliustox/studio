@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "FinRAGas",
+    "description": "Išmanus draudimo sprendimų paieškos įrankis"
+  },
+  "chat": {
+    "title": "FinRAGas",
+    "subtitle": "Išmanus draudimo sprendimų paieškos įrankis",
+    "initialMessage": "Sveiki! Aš esu didelis kalbos modelis, apmokytas Google. Mano pagrindinė funkcija yra padėti jums spręsti ginčus tarp klientų ir draudimo bendrovių, remiantis **Lietuvos banko** išspręstų ginčų dokumentais. Kuo galiu padėti?",
+    "inputPlaceholder": "Įveskite savo žinutę...",
+    "send": "Siųsti",
+    "sessionId": "Sesijos ID"
+  },
+  "error": {
+    "genericError": "Klaida",
+    "processingError": "Apdorojant jūsų užklausą įvyko klaida. Bandykite dar kartą.",
+    "emptyAnswer": "Atsiprašau, atsakymo negavau. Bandykite perfrazuoti klausimą.",
+    "serverConfig": "Serverio konfigūracijos klaida. Trūksta prisijungimo prie duomenų šaltinio duomenų.",
+    "webhookResponseError": "Nepavyko gauti atsakymo iš duomenų šaltinio.",
+    "emptyResponse": "Duomenų šaltinis grąžino tuščią atsakymą.",
+    "parsingError": "Nepavyko apdoroti atsakymo iš duomenų šaltinio.",
+    "connectionError": "Nepavyko prisijungti prie duomenų šaltinio."
+  }
+}
