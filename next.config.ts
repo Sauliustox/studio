@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: [process.env.WEBHOOK_URL ?? ''],
+    },
+  },
   images: {
     remotePatterns: [
       {

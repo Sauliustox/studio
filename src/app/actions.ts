@@ -1,5 +1,7 @@
 'use server';
 
+import { t } from 'i18next';
+
 interface AgentResponse {
   output?: string;
 }
