@@ -1,14 +1,8 @@
 'use server';
 
-import { t } from 'i18next';
-
-interface AgentResponse {
-  output?: string;
-}
-
 export async function sendMessage(sessionId: string, chatInput: string): Promise<{ text?: string; error?: string }> {
-  const webhookUrl = process.env.WEBHOOK_URL;
-  const bearerToken = process.env.WEBHOOK_AUTH_BEARER_TOKEN;
+  const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+  const bearerToken = process.env.NEXT_PUBLIC_WEBHOOK_AUTH_BEARER_TOKEN;
 
   if (!webhookUrl || !bearerToken) {
     console.error('Webhook URL or Bearer Token is not configured in environment variables.');
@@ -38,7 +32,7 @@ export async function sendMessage(sessionId: string, chatInput: string): Promise
     }
 
     try {
-      const data: AgentResponse = JSON.parse(responseText);
+      const data = JSON.parse(responseText);
       const text = data.output;
       if (typeof text !== 'string') {
           return { text: JSON.stringify(data) }
