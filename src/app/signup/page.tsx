@@ -1,3 +1,5 @@
+'use client';
+
 import AuthLayout from '@/components/auth/auth-layout';
 import SignupForm from '@/components/auth/signup-form';
 import { useTranslation } from 'react-i18next';
