@@ -1,8 +1,8 @@
 'use client';
 import AuthLayout from '@/components/auth/auth-layout';
 import SignupForm from '@/components/auth/signup-form';
-import { useTranslation } from '../i18n/client';
-import { useI18n } from '../i18n/provider';
+import { useTranslation } from '@/app/i18n/client';
+import { useI18n } from '@/app/i18n/provider';
 
 export default function SignupPage() {
   const { lng } = useI18n();

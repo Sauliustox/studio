@@ -8,8 +8,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
-import { useTranslation } from '../i18n/client';
-import { useI18n } from '../i18n/provider';
+import { useTranslation } from '@/app/i18n/client';
+import { useI18n } from '@/app/i18n/provider';
 
 export default function VerifyEmailPage() {
   const auth = useAuth();
@@ -21,7 +21,7 @@ export default function VerifyEmailPage() {
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && lng) {
       if (!user) {
         router.push(`/${lng}/login`);
       } else if (user.emailVerified) {
