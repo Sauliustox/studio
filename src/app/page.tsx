@@ -12,12 +12,16 @@ export default function Home() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
+    if (!loading) {
+      if (!user) {
+        router.push('/login');
+      } else if (!user.emailVerified) {
+        router.push('/verify-email');
+      }
     }
   }, [user, loading, router]);
 
-  if (loading || !user) {
+  if (loading || !user || !user.emailVerified) {
     return (
       <main className="flex h-[100dvh] flex-col items-center justify-center bg-background p-4">
         <p>{t('chat.loading')}</p>
