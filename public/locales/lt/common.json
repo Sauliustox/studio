@@ -1,13 +1,13 @@
-{
+
 {
   "chat": {
     "title": "AI Asistentas",
-    "subtitle": "Klauskite manęs bet ko!",
+    "subtitle": "Jūsų draugiškas dirbtinis intelektas",
     "inputPlaceholder": "Įveskite savo žinutę...",
-    "initialMessage": "Sveiki! Kaip galiu jums padėti šiandien?",
     "send": "Siųsti",
-    "loading": "Kraunama...",
-    "sessionId": "Sesijos ID"
+    "initialMessage": "Sveiki! Kuo galiu jums padėti?",
+    "sessionId": "Sesijos ID",
+    "loading": "Kraunama..."
   },
   "auth": {
     "email": "El. paštas",
@@ -15,44 +15,42 @@
     "logout": "Atsijungti",
     "login": {
       "title": "Prisijungimas",
-      "description": "Įveskite savo prisijungimo duomenis, kad pasiektumėte savo paskyrą.",
+      "description": "Įveskite savo el. paštą, kad prisijungtumėte.",
       "button": "Prisijungti",
-      "noAccount": "Neturite paskyros?",
-      "signUpLink": "Užsiregistruoti",
-      "successTitle": "Sėkmingai prisijungėte",
+      "successTitle": "Sėkmingai prisijungėte!",
       "errorTitle": "Prisijungti nepavyko",
-      "errorDescription": "Neteisingas el. paštas arba slaptažodis. Bandykite dar kartą.",
-      "verificationErrorTitle": "El. paštas nepatvirtintas",
-      "verificationErrorDescription": "Prašome patvirtinti savo el. pašto adresą prieš jungiantis. Patikrinkite savo pašto dėžutę."
+      "errorDescription": "Patikrinkite el. paštą ir slaptažodį.",
+      "noAccount": "Neturite paskyros?",
+      "signUpLink": "Užsiregistruoti"
     },
     "signup": {
-      "title": "Sukurti paskyrą",
-      "description": "Įveskite savo el. paštą ir slaptažodį, kad užsiregistruotumėte.",
-      "button": "Registruotis",
+      "title": "Registracija",
+      "description": "Įveskite savo duomenis, kad sukurtumėte paskyrą.",
+      "button": "Užsiregistruoti",
+      "successTitle": "Registracija sėkminga!",
+      "successDescription": "Patvirtinimo laiškas išsiųstas. Patikrinkite savo pašto dėžutę.",
+      "errorTitle": "Registracija nepavyko",
       "haveAccount": "Jau turite paskyrą?",
-      "signInLink": "Prisijungti",
-      "successTitle": "Registracija sėkminga",
-      "successDescription": "Patvirtinimo laiškas buvo išsiųstas į jūsų el. pašto dėžutę. Prašome patvirtinti savo paskyrą.",
-      "errorTitle": "Registracija nepavyko"
+      "signInLink": "Prisijungti"
     },
     "verifyEmail": {
       "title": "Patvirtinkite savo el. paštą",
-      "description": "Patvirtinimo nuoroda buvo išsiųsta adresu {{email}}. Prašome patikrinti savo pašto dėžutę.",
-      "instructions": "Jei nematote laiško, patikrinkite šlamšto (spam) aplanką arba paspauskite mygtuką žemiau, kad išsiųstumėte laišką iš naujo.",
+      "description": "Patvirtinimo nuoroda buvo išsiųsta jūsų el. pašto adresu {email}.",
+      "instructions": "Patikrinkite savo pašto dėžutę ir paspauskite nuorodą, kad aktyvuotumėte paskyrą. Jei nematote laiško, patikrinkite šlamšto (spam) aplanką.",
       "resendButton": "Siųsti patvirtinimo laišką iš naujo",
-      "resendSuccessTitle": "Laiškas išsiųstas",
-      "resendSuccessDescription": "Naujas patvirtinimo laiškas buvo išsiųstas jūsų adresu.",
-      "resendErrorTitle": "Išsiųsti nepavyko",
-      "resendErrorDescription": "Kažkas nutiko. Prašome pabandyti dar kartą po kelių akimirkų."
+      "resendSuccessTitle": "Laiškas išsiųstas!",
+      "resendSuccessDescription": "Nauja patvirtinimo nuoroda buvo išsiųsta jūsų el. pašto adresu.",
+      "resendErrorTitle": "Klaida",
+      "resendErrorDescription": "Nepavyko išsiųsti patvirtinimo laiško. Bandykite vėliau."
     }
   },
   "error": {
-    "serverConfig": "Serveris sukonfigūruotas neteisingai. Prašome susisiekti su palaikymo komanda.",
-    "webhookResponseError": "Serveris grąžino klaidą. Prašome pabandyti vėliau.",
-    "emptyResponse": "Serveris grąžino tuščią atsakymą.",
+    "serverConfig": "Serverio konfigūracijos klaida. Susisiekite su palaikymo komanda.",
+    "webhookResponseError": "Įvyko klaida gaunant atsakymą iš webhook.",
+    "emptyResponse": "Gautas tuščias atsakymas iš serverio.",
     "parsingError": "Nepavyko apdoroti serverio atsakymo.",
     "connectionError": "Nepavyko prisijungti prie serverio. Patikrinkite interneto ryšį.",
-    "processingError": "Apdorojant jūsų užklausą įvyko netikėta klaida.",
-    "emptyAnswer": "Atsiprašau, nepavyko sugeneruoti atsakymo. Bandykite dar kartą."
+    "processingError": "Apdorojant užklausą įvyko netikėta klaida.",
+    "emptyAnswer": "Asistentas nepateikė atsakymo."
   }
 }

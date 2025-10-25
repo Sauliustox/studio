@@ -1,13 +1,13 @@
-{
+
 {
   "chat": {
     "title": "AI Assistant",
-    "subtitle": "Ask me anything!",
+    "subtitle": "Your friendly neighborhood AI",
     "inputPlaceholder": "Type your message...",
-    "initialMessage": "Hello! How can I help you today?",
     "send": "Send",
-    "loading": "Loading...",
-    "sessionId": "Session ID"
+    "initialMessage": "Hello! How can I help you today?",
+    "sessionId": "Session ID",
+    "loading": "Loading..."
   },
   "auth": {
     "email": "Email",
@@ -15,44 +15,42 @@
     "logout": "Log Out",
     "login": {
       "title": "Login",
-      "description": "Enter your credentials to access your account.",
-      "button": "Log In",
-      "noAccount": "Don't have an account?",
-      "signUpLink": "Sign Up",
-      "successTitle": "Login Successful",
+      "description": "Enter your email below to login to your account.",
+      "button": "Login",
+      "successTitle": "Login Successful!",
       "errorTitle": "Login Failed",
-      "errorDescription": "Incorrect email or password. Please try again.",
-      "verificationErrorTitle": "Email Not Verified",
-      "verificationErrorDescription": "Please verify your email address before logging in. Check your inbox for a verification link."
+      "errorDescription": "Please check your email and password.",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
     },
     "signup": {
-      "title": "Create an Account",
-      "description": "Enter your email and password to sign up.",
+      "title": "Sign Up",
+      "description": "Enter your information to create an account.",
       "button": "Sign Up",
+      "successTitle": "Registration Successful!",
+      "successDescription": "A verification email has been sent. Please check your inbox.",
+      "errorTitle": "Registration Failed",
       "haveAccount": "Already have an account?",
-      "signInLink": "Sign In",
-      "successTitle": "Registration Successful",
-      "successDescription": "A verification email has been sent to your inbox. Please verify your account.",
-      "errorTitle": "Registration Failed"
+      "signInLink": "Sign in"
     },
     "verifyEmail": {
       "title": "Verify Your Email",
-      "description": "A verification link has been sent to {{email}}. Please check your inbox.",
-      "instructions": "If you don't see the email, check your spam folder or click the button below to resend it.",
+      "description": "A verification link has been sent to your email address at {email}.",
+      "instructions": "Please check your inbox and click the link to activate your account. If you don't see the email, please check your spam folder.",
       "resendButton": "Resend Verification Email",
-      "resendSuccessTitle": "Email Sent",
-      "resendSuccessDescription": "A new verification email has been sent to your address.",
-      "resendErrorTitle": "Failed to Send",
-      "resendErrorDescription": "Something went wrong. Please try again in a few moments."
+      "resendSuccessTitle": "Email Sent!",
+      "resendSuccessDescription": "A new verification link has been sent to your email address.",
+      "resendErrorTitle": "Error",
+      "resendErrorDescription": "Failed to send verification email. Please try again later."
     }
   },
   "error": {
-    "serverConfig": "Server is not configured correctly. Please contact support.",
-    "webhookResponseError": "The server returned an error. Please try again later.",
-    "emptyResponse": "The server returned an empty response.",
-    "parsingError": "Failed to parse the server's response.",
+    "serverConfig": "Server configuration error. Please contact support.",
+    "webhookResponseError": "There was an error with the webhook response.",
+    "emptyResponse": "Received an empty response from the server.",
+    "parsingError": "Failed to parse the server response.",
     "connectionError": "Could not connect to the server. Please check your internet connection.",
     "processingError": "An unexpected error occurred while processing your request.",
-    "emptyAnswer": "Sorry, I couldn't generate a response. Please try again."
+    "emptyAnswer": "The agent did not provide an answer."
   }
 }
