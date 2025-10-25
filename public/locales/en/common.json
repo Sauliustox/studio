@@ -1,38 +1,39 @@
 {
   "chat": {
-    "title": "Chat",
+    "title": "Webhook Chat",
     "subtitle": "A simple chat interface for a webhook.",
+    "initialMessage": "Hello! I'm your assistant. How can I help you?",
     "inputPlaceholder": "Type your message...",
     "send": "Send",
-    "initialMessage": "Hello! How can I help you today?",
-    "sessionId": "Session ID"
+    "sessionId": "Session ID",
+    "loading": "Loading..."
   },
   "auth": {
+    "email": "Email",
+    "password": "Password",
+    "logout": "Log Out",
     "login": {
       "title": "Login",
-      "description": "Enter your credentials to access your account.",
-      "button": "Login",
+      "description": "Enter your email and password to sign in.",
+      "button": "Sign In",
       "noAccount": "Don't have an account?",
       "signUpLink": "Sign up"
     },
     "signup": {
       "title": "Sign Up",
-      "description": "Create a new account to get started.",
+      "description": "Create a new account.",
       "button": "Sign Up",
       "haveAccount": "Already have an account?",
       "signInLink": "Sign in"
-    },
-    "email": "Email",
-    "password": "Password",
-    "logout": "Log out"
+    }
   },
   "error": {
-    "serverConfig": "Server configuration error. Missing connection data.",
-    "webhookResponseError": "Error receiving response from the data source.",
+    "serverConfig": "Server configuration error. Missing Webhook URL or auth token.",
+    "webhookResponseError": "Error receiving response from the Webhook server.",
     "emptyResponse": "Received an empty response from the server.",
-    "emptyAnswer": "The request was processed, but the answer is empty.",
     "parsingError": "Error parsing server response.",
-    "connectionError": "Could not connect to the server.",
+    "connectionError": "Failed to connect to the Webhook server.",
+    "emptyAnswer": "The answer is empty.",
     "processingError": "An error occurred while processing your request."
   }
 }

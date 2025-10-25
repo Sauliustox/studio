@@ -1,38 +1,39 @@
 {
   "chat": {
-    "title": "Pokalbis",
-    "subtitle": "Paprasta pokalbių sąsaja Jūsų pagrininiam puslapiui.",
+    "title": "Pokalbių programa",
+    "subtitle": "Paprasta pokalbių sąsaja su Webhook",
+    "initialMessage": "Sveiki! Aš esu jūsų asistentas. Kaip galiu padėti?",
     "inputPlaceholder": "Įveskite savo žinutę...",
     "send": "Siųsti",
-    "initialMessage": "Sveiki! Kaip galiu Jums padėti šiandien?",
-    "sessionId": "Sesijos ID"
+    "sessionId": "Sesijos ID",
+    "loading": "Kraunama..."
   },
   "auth": {
+    "email": "El. paštas",
+    "password": "Slaptažodis",
+    "logout": "Atsijungti",
     "login": {
       "title": "Prisijungimas",
-      "description": "Įveskite savo prisijungimo duomenis, kad pasiektumėte savo paskyrą.",
+      "description": "Įveskite savo el. paštą ir slaptažodį, kad prisijungtumėte.",
       "button": "Prisijungti",
       "noAccount": "Neturite paskyros?",
-      "signUpLink": "Užsiregistruoti"
+      "signUpLink": "Užsiregistruokite"
     },
     "signup": {
       "title": "Registracija",
-      "description": "Sukurkite naują paskyrą, kad galėtumėte pradėti.",
+      "description": "Sukurkite naują paskyrą.",
       "button": "Užsiregistruoti",
       "haveAccount": "Jau turite paskyrą?",
-      "signInLink": "Prisijungti"
-    },
-    "email": "El. paštas",
-    "password": "Slaptažodis",
-    "logout": "Atsijungti"
+      "signInLink": "Prisijunkite"
+    }
   },
   "error": {
-    "serverConfig": "Serverio konfigūracijos klaida. Trūksta prisijungimo prie duomenų šaltinio duomenų.",
-    "webhookResponseError": "Klaida gaunant atsakymą iš duomenų šaltinio.",
+    "serverConfig": "Serverio konfigūracijos klaida. Trūksta Webhook URL arba autorizacijos rakto.",
+    "webhookResponseError": "Klaida gaunant atsakymą iš Webhook serverio.",
     "emptyResponse": "Gautas tuščias atsakymas iš serverio.",
-    "emptyAnswer": "Užklausa apdorota, bet atsakymas yra tuščias.",
     "parsingError": "Klaida apdorojant serverio atsakymą.",
-    "connectionError": "Nepavyko prisijungti prie serverio.",
-    "processingError": "Apdorojant Jūsų užklausą įvyko klaida."
+    "connectionError": "Nepavyko prisijungti prie Webhook serverio.",
+    "emptyAnswer": "Atsakymas tuščias.",
+    "processingError": "Apdorojant jūsų užklausą įvyko klaida."
   }
 }
