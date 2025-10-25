@@ -1,28 +1,38 @@
 {
-  "app": {
-    "title": "FinRag'as",
-    "description": "An intelligent tool for searching insurance dispute resolutions."
-  },
   "chat": {
-    "title": "FinRag'as",
-    "subtitle": "Intelligent insurance decision search tool",
-    "sessionId": "Session ID",
-    "initialMessage": "Hello! I am a large language model, trained by Google. My main function is to help you resolve disputes between clients and insurance companies, based on the documents of disputes resolved by the **Bank of Lithuania**. How can I help you?",
-    "inputPlaceholder": "Enter a message...",
+    "title": "Chat",
+    "subtitle": "A simple chat interface for a webhook.",
+    "inputPlaceholder": "Type your message...",
     "send": "Send",
-    "agentTyping": "Agent is typing"
+    "initialMessage": "Hello! How can I help you today?",
+    "sessionId": "Session ID"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "description": "Enter your credentials to access your account.",
+      "button": "Login",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "description": "Create a new account to get started.",
+      "button": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
+    },
+    "email": "Email",
+    "password": "Password",
+    "logout": "Log out"
   },
   "error": {
-    "webhookConfig": "Webhook URL or authorization key is not defined in environment variables.",
-    "serverConfig": "Server configuration error.",
-    "webhookError": "Webhook error:",
-    "webhookResponseError": "The data source responded with an error:",
-    "emptyResponse": "Received an empty response from the agent.",
-    "sendMessage": "Error sending message:",
-    "parsingError": "Failed to process server response.",
-    "connectionError": "Failed to connect to the data source.",
-    "genericError": "An error occurred",
-    "emptyAnswer": "Sorry, I received a response, but it was empty.",
-    "processingError": "Sorry, your request could not be processed."
+    "serverConfig": "Server configuration error. Missing connection data.",
+    "webhookResponseError": "Error receiving response from the data source.",
+    "emptyResponse": "Received an empty response from the server.",
+    "emptyAnswer": "The request was processed, but the answer is empty.",
+    "parsingError": "Error parsing server response.",
+    "connectionError": "Could not connect to the server.",
+    "processingError": "An error occurred while processing your request."
   }
 }
