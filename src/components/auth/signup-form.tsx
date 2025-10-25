@@ -50,7 +50,7 @@ export default function SignupForm() {
         title: t('auth.signup.successTitle'),
         description: t('auth.signup.successDescription'),
       });
-      router.push(`/login`);
+      router.push(`/verify-email`);
     } catch (error: any) {
       console.error(error);
       toast({
