@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import { sendMessage } from '@/app/actions';
 import ChatMessages from './chat-messages';
 import ChatInput from './chat-input';
-import { useTranslation } from 'react-i18next';
 import { useAuth, useUser } from '@/firebase';
 import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { LogOut } from 'lucide-react';
+import { useTranslation } from '@/app/i18n/client';
+import { useRouter } from 'next/navigation';
 
 export interface Message {
   id: string;
@@ -17,17 +18,17 @@ export interface Message {
   text: string;
 }
 
-export default function ChatLayout() {
+export default function ChatLayout({lng}: {lng: string}) {
   const { user, loading } = useUser();
   const auth = useAuth();
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation(lng, 'common');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // This runs only on the client, after the component has mounted.
     setIsClient(true);
     setSessionId(crypto.randomUUID());
     setMessages([
@@ -69,12 +70,13 @@ export default function ChatLayout() {
 
   const handleLogout = async () => {
     await signOut(auth);
+    router.push(`/${lng}/login`);
   };
 
   if (!isClient || loading) {
     return (
       <div className="flex h-full w-full max-w-4xl flex-col items-center justify-center rounded-xl border bg-card shadow-2xl shadow-primary/10">
-        <p>Kraunama...</p>
+        <p>{t('chat.loading')}</p>
       </div>
     );
   }
@@ -94,7 +96,7 @@ export default function ChatLayout() {
             </Button>
           ) : (
             <Button asChild variant="outline">
-              <Link href="/login">{t('auth.login.button')}</Link>
+              <Link href={`/${lng}/login`}>{t('auth.login.button')}</Link>
             </Button>
           )}
           {sessionId && (
@@ -105,7 +107,7 @@ export default function ChatLayout() {
         </div>
       </header>
       <ChatMessages messages={messages} isLoading={isLoading} />
-      <ChatInput onSend={handleSend} isLoading={isLoading} />
+      <ChatInput onSend={handleSend} isLoading={isLoading} lng={lng} />
     </div>
   );
 }

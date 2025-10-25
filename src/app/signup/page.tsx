@@ -1,17 +1,16 @@
 'use client';
-
 import AuthLayout from '@/components/auth/auth-layout';
 import SignupForm from '@/components/auth/signup-form';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../i18n/client';
 
-export default function SignupPage() {
-  const { t } = useTranslation();
+export default function SignupPage({ params: { lng } }: { params: { lng: string } }) {
+  const { t } = useTranslation(lng, 'common');
   return (
     <AuthLayout
       title={t('auth.signup.title')}
       description={t('auth.signup.description')}
     >
-      <SignupForm />
+      <SignupForm lng={lng} />
     </AuthLayout>
   );
 }

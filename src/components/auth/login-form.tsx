@@ -19,15 +19,15 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/app/i18n/client';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Neteisingas el. pašto formatas.' }),
   password: z.string().min(6, { message: 'Slaptažodis turi būti bent 6 simbolių ilgio.' }),
 });
 
-export default function LoginForm() {
-  const { t } = useTranslation();
+export default function LoginForm({ lng }: { lng: string }) {
+  const { t } = useTranslation(lng, 'common');
   const auth = useAuth();
   const { toast } = useToast();
   const router = useRouter();
@@ -45,14 +45,14 @@ export default function LoginForm() {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
       
       if (!userCredential.user.emailVerified) {
-        router.push('/verify-email');
+        router.push(`/${lng}/verify-email`);
         return;
       }
       
       toast({
         title: t('auth.login.successTitle'),
       });
-      router.push('/');
+      router.push(`/${lng}`);
     } catch (error: any) {
       console.error(error);
       toast({
@@ -97,7 +97,7 @@ export default function LoginForm() {
           {t('auth.login.button')}
         </Button>
         <p className="text-center text-sm text-muted-foreground">
-          {t('auth.login.noAccount')} <Link href="/signup" className="underline hover:text-primary">{t('auth.login.signUpLink')}</Link>
+          {t('auth.login.noAccount')} <Link href={`/${lng}/signup`} className="underline hover:text-primary">{t('auth.login.signUpLink')}</Link>
         </p>
       </form>
     </Form>

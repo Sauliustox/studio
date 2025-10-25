@@ -5,30 +5,28 @@ import { useAuth, useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { sendEmailVerification } from 'firebase/auth';
 import { useToast } from '@/hooks/use-toast';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
+import { useTranslation } from '../i18n/client';
 
-export default function VerifyEmailPage() {
+export default function VerifyEmailPage({ params: { lng } }: { params: { lng: string } }) {
   const auth = useAuth();
   const { user, loading } = useUser();
   const router = useRouter();
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t } = useTranslation(lng, 'common');
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     if (!loading) {
       if (!user) {
-        // No user is logged in, redirect to login.
-        router.push('/login');
+        router.push(`/${lng}/login`);
       } else if (user.emailVerified) {
-        // User is verified, redirect to home.
-        router.push('/');
+        router.push(`/${lng}`);
       }
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, lng]);
 
   const handleResendEmail = async () => {
     if (!user) return;
@@ -76,7 +74,7 @@ export default function VerifyEmailPage() {
             {isSending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {t('auth.verifyEmail.resendButton')}
           </Button>
-          <Button variant="outline" onClick={() => auth.signOut().then(() => router.push('/login'))}>
+          <Button variant="outline" onClick={() => auth.signOut().then(() => router.push(`/${lng}/login`))}>
             {t('auth.logout')}
           </Button>
         </CardContent>

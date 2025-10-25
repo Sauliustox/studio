@@ -4,22 +4,22 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/firebase';
 import ChatLayout from '@/components/chat/chat-layout';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from './i18n/client';
 
-export default function Home() {
+export default function Home({ params: { lng } }: { params: { lng: string } }) {
   const { user, loading } = useUser();
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t } = useTranslation(lng, 'common');
 
   useEffect(() => {
     if (!loading) {
       if (!user) {
-        router.push('/login');
+        router.push(`/${lng}/login`);
       } else if (!user.emailVerified) {
-        router.push('/verify-email');
+        router.push(`/${lng}/verify-email`);
       }
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, lng]);
 
   if (loading || !user || !user.emailVerified) {
     return (
@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main className="flex h-[100dvh] flex-col items-center justify-center bg-background p-4">
-      <ChatLayout />
+      <ChatLayout lng={lng} />
     </main>
   );
 }
