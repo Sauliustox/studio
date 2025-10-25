@@ -31,7 +31,7 @@ export default function VerifyEmailPage() {
     setIsSending(true);
     try {
       const actionCodeSettings = {
-        url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login`,
+        url: `${window.location.origin}/login`,
         handleCodeInApp: true,
       };
       await sendEmailVerification(user, actionCodeSettings);

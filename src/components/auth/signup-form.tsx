@@ -42,7 +42,7 @@ export default function SignupForm() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       const actionCodeSettings = {
-        url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login`,
+        url: `${window.location.origin}/login`,
         handleCodeInApp: true,
       };
       await sendEmailVerification(userCredential.user, actionCodeSettings);

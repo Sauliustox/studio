@@ -8,14 +8,14 @@ const firebaseConfig = {
 };
 
 function getConfig() {
-  if (!firebaseConfig.apiKey) {
-    throw new Error('Missing NEXT_PUBLIC_FIREBASE_API_KEY');
-  }
-  if (!firebaseConfig.authDomain) {
-    throw new Error('Missing NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN');
-  }
-  if (!firebaseConfig.projectId) {
-    throw new Error('Missing NEXT_PUBLIC_FIREBASE_PROJECT_ID');
+  if (
+    !firebaseConfig.apiKey ||
+    !firebaseConfig.authDomain ||
+    !firebaseConfig.projectId
+  ) {
+    console.warn(
+      'Firebase config is not set. Please set it in .env.local file'
+    );
   }
   return firebaseConfig;
 }
