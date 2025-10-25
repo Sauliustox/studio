@@ -84,7 +84,7 @@ export default function ChatLayout() {
       <header className="flex items-center justify-between rounded-t-xl border-b p-4">
         <div>
           <h1 className="text-xl font-bold font-headline text-foreground">FinRAGas</h1>
-          <p className="font-normal font-body text-foreground text-sm">Jūsų asistentas</p>
+          <p className="font-normal font-body text-foreground text-sm">Išmanus draudimo sprendimų paieškos įrankis</p>
         </div>
         <div className='flex items-center gap-4'>
           {user ? (
