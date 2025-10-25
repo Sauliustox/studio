@@ -90,6 +90,7 @@ export default function SignupForm() {
         return;
     }
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
     try {
         await signInWithPopup(auth, provider);
         toast({
