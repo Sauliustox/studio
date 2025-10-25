@@ -33,7 +33,7 @@ export default function ChatLayout() {
       {
         id: crypto.randomUUID(),
         sender: 'agent',
-        text: 'Sveiki! Aš esu didelis kalbos modelis, apmokytas Google. Mano pagrindinė funkcija yra padėti jums spręsti ginčus tarp klientų ir draudimo bendrovių, remiantis **Lietuvos banko** išspręstų ginčų dokumentais. Kuo galiu padėti?',
+        text: 'Sveiki! Aš esu didelis kalbos modelis, apmokytas Google. Mano pagrindinė funkcija yra padėti jums spręsti ginčus tarp klientų ir draudimo bendrovių, remiantis **Lietuvos banko** išspręstų ginčų dokumentais.\n\nKuo galiu padėti?',
       },
     ]);
   }, []);
