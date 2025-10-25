@@ -14,6 +14,7 @@ export default function VerifyEmailPage() {
   const { user, loading } = useUser();
   const router = useRouter();
   const [isSending, setIsSending] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (loading) return;
