@@ -14,8 +14,9 @@ function getConfig() {
     !firebaseConfig.projectId
   ) {
     console.warn(
-      'Firebase config is not set. Please set it in .env.local file'
+      'Firebase config is not set. Please set it in .env.local file. Firebase features will be disabled.'
     );
+    return null;
   }
   return firebaseConfig;
 }

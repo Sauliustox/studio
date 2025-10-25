@@ -17,21 +17,21 @@ export default function VerifyEmailPage() {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || !auth) return;
     
     if (!user) {
       router.push(`/login`);
     } else if (user.emailVerified) {
       router.push(`/`);
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, auth]);
 
   const handleResendEmail = async () => {
-    if (!user) return;
+    if (!user || !auth) return;
     setIsSending(true);
     try {
       const actionCodeSettings = {
-        url: `${window.location.origin}/login`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login`,
         handleCodeInApp: true,
       };
       await sendEmailVerification(user, actionCodeSettings);
@@ -57,6 +57,21 @@ export default function VerifyEmailPage() {
         <p>Kraunasi...</p>
       </main>
     );
+  }
+
+  if (!auth) {
+    return (
+       <main className="flex h-screen flex-col items-center justify-center bg-background p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Klaida</CardTitle>
+            <CardDescription>
+              Firebase nėra sukonfigūruotas. Patikrinkite .env.local failą.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </main>
+    )
   }
 
   return (

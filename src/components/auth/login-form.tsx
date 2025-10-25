@@ -39,6 +39,14 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!auth) {
+      toast({
+        variant: 'destructive',
+        title: "Konfigūracijos klaida",
+        description: "Firebase nėra sukonfigūruotas.",
+      });
+      return;
+    }
     try {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
       
@@ -90,7 +98,7 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting || !auth}>
           {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Prisijungti
         </Button>

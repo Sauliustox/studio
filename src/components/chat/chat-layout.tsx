@@ -67,6 +67,7 @@ export default function ChatLayout() {
   };
 
   const handleLogout = async () => {
+    if (!auth) return;
     await signOut(auth);
     router.push(`/login`);
   };
@@ -88,12 +89,12 @@ export default function ChatLayout() {
         </div>
         <div className='flex items-center gap-4'>
           {user ? (
-            <Button onClick={handleLogout} variant="ghost" size="icon">
+            <Button onClick={handleLogout} variant="ghost" size="icon" disabled={!auth}>
               <LogOut className="h-5 w-5" />
               <span className='sr-only'>Atsijungti</span>
             </Button>
           ) : (
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" disabled={!auth}>
               <Link href={`/login`}>Prisijungti</Link>
             </Button>
           )}

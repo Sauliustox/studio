@@ -39,10 +39,18 @@ export default function SignupForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!auth) {
+      toast({
+        variant: 'destructive',
+        title: "Konfigūracijos klaida",
+        description: "Firebase nėra sukonfigūruotas.",
+      });
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       const actionCodeSettings = {
-        url: `${window.location.origin}/login`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login`,
         handleCodeInApp: true,
       };
       await sendEmailVerification(userCredential.user, actionCodeSettings);
@@ -90,7 +98,7 @@ export default function SignupForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting || !auth}>
           {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Registruotis
         </Button>
