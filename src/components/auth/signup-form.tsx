@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
@@ -42,17 +42,18 @@ export default function SignupForm() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      await sendEmailVerification(userCredential.user);
       toast({
-        title: 'Paskyra sėkmingai sukurta!',
-        description: 'Dabar galite prisijungti.',
+        title: t('auth.signup.successTitle'),
+        description: t('auth.signup.successDescription'),
       });
       router.push('/login');
     } catch (error: any) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Registracijos klaida',
+        title: t('auth.signup.errorTitle'),
         description: error.message,
       });
     }

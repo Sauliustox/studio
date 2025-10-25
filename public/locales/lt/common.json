@@ -1,39 +1,47 @@
 {
-  "chat": {
-    "title": "Pokalbių programa",
-    "subtitle": "Paprasta pokalbių sąsaja su Webhook",
-    "initialMessage": "Sveiki! Aš esu jūsų asistentas. Kaip galiu padėti?",
-    "inputPlaceholder": "Įveskite savo žinutę...",
-    "send": "Siųsti",
-    "sessionId": "Sesijos ID",
-    "loading": "Kraunama..."
-  },
-  "auth": {
-    "email": "El. paštas",
-    "password": "Slaptažodis",
-    "logout": "Atsijungti",
-    "login": {
-      "title": "Prisijungimas",
-      "description": "Įveskite savo el. paštą ir slaptažodį, kad prisijungtumėte.",
-      "button": "Prisijungti",
-      "noAccount": "Neturite paskyros?",
-      "signUpLink": "Užsiregistruokite"
+    "chat": {
+      "title": "Pokalbių kambarys",
+      "subtitle": "Paprasta sąsaja pokalbiams",
+      "initialMessage": "Sveiki! Aš esu jūsų asistentas. Kuo galiu padėti?",
+      "inputPlaceholder": "Įveskite savo žinutę...",
+      "send": "Siųsti",
+      "loading": "Kraunama...",
+      "sessionId": "Sesijos ID"
     },
-    "signup": {
-      "title": "Registracija",
-      "description": "Sukurkite naują paskyrą.",
-      "button": "Užsiregistruoti",
-      "haveAccount": "Jau turite paskyrą?",
-      "signInLink": "Prisijunkite"
+    "auth": {
+        "email": "El. paštas",
+        "password": "Slaptažodis",
+        "logout": "Atsijungti",
+        "login": {
+            "title": "Prisijungimas",
+            "description": "Įveskite savo el. paštą ir slaptažodį, kad prisijungtumėte.",
+            "button": "Prisijungti",
+            "noAccount": "Neturite paskyros?",
+            "signUpLink": "Registruotis",
+            "successTitle": "Sėkmingai prisijungėte!",
+            "errorTitle": "Prisijungimo klaida",
+            "errorDescription": "Patikrinkite savo el. paštą ir slaptažodį.",
+            "verificationErrorTitle": "El. paštas nepatvirtintas",
+            "verificationErrorDescription": "Prašome patvirtinti savo el. paštą prieš prisijungiant. Patikrinkite savo pašto dėžutę."
+        },
+        "signup": {
+            "title": "Registracija",
+            "description": "Užpildykite formą, kad sukurtumėte naują paskyrą.",
+            "button": "Registruotis",
+            "haveAccount": "Jau turite paskyrą?",
+            "signInLink": "Prisijungti",
+            "successTitle": "Paskyra sėkmingai sukurta!",
+            "successDescription": "Išsiuntėme patvirtinimo laišką. Prašome patikrinti savo pašto dėžutę.",
+            "errorTitle": "Registracijos klaida"
+        }
+    },
+    "error": {
+        "serverConfig": "Serverio konfigūracijos klaida. Trūksta WEBHOOK_URL arba autorizacijos rakto.",
+        "webhookResponseError": "Klaida siunčiant užklausą į Webhook. Patikrinkite serverio log'us.",
+        "emptyResponse": "Gautas tuščias atsakymas iš serverio.",
+        "parsingError": "Klaida apdorojant serverio atsakymą.",
+        "connectionError": "Nepavyko prisijungti prie serverio.",
+        "processingError": "Įvyko nenumatyta klaida apdorojant jūsų užklausą.",
+        "emptyAnswer": "Atsiprašome, negavome atsakymo."
     }
-  },
-  "error": {
-    "serverConfig": "Serverio konfigūracijos klaida. Trūksta Webhook URL arba autorizacijos rakto.",
-    "webhookResponseError": "Klaida gaunant atsakymą iš Webhook serverio.",
-    "emptyResponse": "Gautas tuščias atsakymas iš serverio.",
-    "parsingError": "Klaida apdorojant serverio atsakymą.",
-    "connectionError": "Nepavyko prisijungti prie Webhook serverio.",
-    "emptyAnswer": "Atsakymas tuščias.",
-    "processingError": "Apdorojant jūsų užklausą įvyko klaida."
-  }
 }

@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
@@ -42,17 +42,28 @@ export default function LoginForm() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+      
+      if (!userCredential.user.emailVerified) {
+        await signOut(auth);
+        toast({
+          variant: 'destructive',
+          title: t('auth.login.verificationErrorTitle'),
+          description: t('auth.login.verificationErrorDescription'),
+        });
+        return;
+      }
+      
       toast({
-        title: 'Sėkmingai prisijungėte!',
+        title: t('auth.login.successTitle'),
       });
       router.push('/');
     } catch (error: any) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Prisijungimo klaida',
-        description: 'Patikrinkite savo el. paštą ir slaptažodį.',
+        title: t('auth.login.errorTitle'),
+        description: t('auth.login.errorDescription'),
       });
     }
   };

@@ -1,39 +1,47 @@
 {
-  "chat": {
-    "title": "Webhook Chat",
-    "subtitle": "A simple chat interface for a webhook.",
-    "initialMessage": "Hello! I'm your assistant. How can I help you?",
-    "inputPlaceholder": "Type your message...",
-    "send": "Send",
-    "sessionId": "Session ID",
-    "loading": "Loading..."
-  },
-  "auth": {
-    "email": "Email",
-    "password": "Password",
-    "logout": "Log Out",
-    "login": {
-      "title": "Login",
-      "description": "Enter your email and password to sign in.",
-      "button": "Sign In",
-      "noAccount": "Don't have an account?",
-      "signUpLink": "Sign up"
+    "chat": {
+      "title": "Chat Room",
+      "subtitle": "A simple interface for conversations",
+      "initialMessage": "Hello! I am your assistant. How can I help you?",
+      "inputPlaceholder": "Enter your message...",
+      "send": "Send",
+      "loading": "Loading...",
+      "sessionId": "Session ID"
     },
-    "signup": {
-      "title": "Sign Up",
-      "description": "Create a new account.",
-      "button": "Sign Up",
-      "haveAccount": "Already have an account?",
-      "signInLink": "Sign in"
+    "auth": {
+        "email": "Email",
+        "password": "Password",
+        "logout": "Log out",
+        "login": {
+            "title": "Login",
+            "description": "Enter your email and password to log in.",
+            "button": "Log in",
+            "noAccount": "Don't have an account?",
+            "signUpLink": "Sign up",
+            "successTitle": "Successfully logged in!",
+            "errorTitle": "Login Error",
+            "errorDescription": "Please check your email and password.",
+            "verificationErrorTitle": "Email not verified",
+            "verificationErrorDescription": "Please verify your email before logging in. Check your inbox."
+        },
+        "signup": {
+            "title": "Sign up",
+            "description": "Fill out the form to create a new account.",
+            "button": "Sign up",
+            "haveAccount": "Already have an account?",
+            "signInLink": "Log in",
+            "successTitle": "Account created successfully!",
+            "successDescription": "We have sent you a verification email. Please check your inbox.",
+            "errorTitle": "Signup Error"
+        }
+    },
+    "error": {
+        "serverConfig": "Server configuration error. Missing WEBHOOK_URL or authorization token.",
+        "webhookResponseError": "Error sending request to Webhook. Check server logs.",
+        "emptyResponse": "Received an empty response from the server.",
+        "parsingError": "Error parsing server response.",
+        "connectionError": "Could not connect to the server.",
+        "processingError": "An unexpected error occurred while processing your request.",
+        "emptyAnswer": "Sorry, no answer was received."
     }
-  },
-  "error": {
-    "serverConfig": "Server configuration error. Missing Webhook URL or auth token.",
-    "webhookResponseError": "Error receiving response from the Webhook server.",
-    "emptyResponse": "Received an empty response from the server.",
-    "parsingError": "Error parsing server response.",
-    "connectionError": "Failed to connect to the Webhook server.",
-    "emptyAnswer": "The answer is empty.",
-    "processingError": "An error occurred while processing your request."
-  }
 }
