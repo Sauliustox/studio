@@ -20,13 +20,15 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from '@/app/i18n/client';
+import { useI18n } from '@/app/i18n/provider';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Neteisingas el. pašto formatas.' }),
   password: z.string().min(6, { message: 'Slaptažodis turi būti bent 6 simbolių ilgio.' }),
 });
 
-export default function SignupForm({ lng }: { lng: string }) {
+export default function SignupForm() {
+  const { lng } = useI18n();
   const { t } = useTranslation(lng, 'common');
   const auth = useAuth();
   const { toast } = useToast();

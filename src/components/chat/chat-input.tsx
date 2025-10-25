@@ -5,15 +5,16 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SendHorizonal, Loader2 } from 'lucide-react';
 import { useTranslation } from '@/app/i18n/client';
+import { useI18n } from '@/app/i18n/provider';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
   isLoading: boolean;
-  lng: string;
 }
 
-export default function ChatInput({ onSend, isLoading, lng }: ChatInputProps) {
+export default function ChatInput({ onSend, isLoading }: ChatInputProps) {
   const [text, setText] = useState('');
+  const { lng } = useI18n();
   const { t } = useTranslation(lng, 'common');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

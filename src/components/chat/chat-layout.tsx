@@ -11,6 +11,7 @@ import { Button } from '../ui/button';
 import { LogOut } from 'lucide-react';
 import { useTranslation } from '@/app/i18n/client';
 import { useRouter } from 'next/navigation';
+import { useI18n } from '@/app/i18n/provider';
 
 export interface Message {
   id: string;
@@ -18,10 +19,11 @@ export interface Message {
   text: string;
 }
 
-export default function ChatLayout({lng}: {lng: string}) {
+export default function ChatLayout() {
   const { user, loading } = useUser();
   const auth = useAuth();
   const router = useRouter();
+  const { lng } = useI18n();
   const [messages, setMessages] = useState<Message[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
@@ -107,7 +109,7 @@ export default function ChatLayout({lng}: {lng: string}) {
         </div>
       </header>
       <ChatMessages messages={messages} isLoading={isLoading} />
-      <ChatInput onSend={handleSend} isLoading={isLoading} lng={lng} />
+      <ChatInput onSend={handleSend} isLoading={isLoading} />
     </div>
   );
 }

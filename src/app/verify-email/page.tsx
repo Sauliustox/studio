@@ -9,12 +9,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 import { useTranslation } from '../i18n/client';
+import { useI18n } from '../i18n/provider';
 
-export default function VerifyEmailPage({ params: { lng } }: { params: { lng: string } }) {
+export default function VerifyEmailPage() {
   const auth = useAuth();
   const { user, loading } = useUser();
   const router = useRouter();
   const { toast } = useToast();
+  const { lng } = useI18n();
   const { t } = useTranslation(lng, 'common');
   const [isSending, setIsSending] = useState(false);
 

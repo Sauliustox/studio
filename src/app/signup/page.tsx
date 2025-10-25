@@ -2,15 +2,17 @@
 import AuthLayout from '@/components/auth/auth-layout';
 import SignupForm from '@/components/auth/signup-form';
 import { useTranslation } from '../i18n/client';
+import { useI18n } from '../i18n/provider';
 
-export default function SignupPage({ params: { lng } }: { params: { lng: string } }) {
+export default function SignupPage() {
+  const { lng } = useI18n();
   const { t } = useTranslation(lng, 'common');
   return (
     <AuthLayout
       title={t('auth.signup.title')}
       description={t('auth.signup.description')}
     >
-      <SignupForm lng={lng} />
+      <SignupForm />
     </AuthLayout>
   );
 }

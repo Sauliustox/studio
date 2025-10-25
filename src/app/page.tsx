@@ -5,10 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '@/firebase';
 import ChatLayout from '@/components/chat/chat-layout';
 import { useTranslation } from './i18n/client';
+import { useI18n } from './i18n/provider';
 
-export default function Home({ params: { lng } }: { params: { lng: string } }) {
+export default function Home() {
   const { user, loading } = useUser();
   const router = useRouter();
+  const { lng } = useI18n();
   const { t } = useTranslation(lng, 'common');
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
 
   return (
     <main className="flex h-[100dvh] flex-col items-center justify-center bg-background p-4">
-      <ChatLayout lng={lng} />
+      <ChatLayout />
     </main>
   );
 }

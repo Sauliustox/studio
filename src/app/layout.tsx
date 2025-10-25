@@ -5,6 +5,7 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { dir } from 'i18next'
 import { languages } from './i18n/settings';
 import { PT_Sans } from 'next/font/google';
+import { I18nProvider } from './i18n/provider';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -42,8 +43,10 @@ export default function RootLayout({
       </head>
       <body className={`${ptSans.variable} font-body antialiased`}>
         <FirebaseClientProvider>
-          {children}
-          <Toaster />
+          <I18nProvider lng={lng}>
+            {children}
+            <Toaster />
+          </I18nProvider>
         </FirebaseClientProvider>
       </body>
     </html>
