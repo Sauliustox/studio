@@ -30,7 +30,11 @@ export default function VerifyEmailPage() {
     if (!user) return;
     setIsSending(true);
     try {
-      await sendEmailVerification(user);
+      const actionCodeSettings = {
+        url: `${window.location.origin}/login`,
+        handleCodeInApp: true,
+      };
+      await sendEmailVerification(user, actionCodeSettings);
       toast({
         title: "Laiškas išsiųstas",
         description: "Patvirtinimo laiškas buvo sėkmingai išsiųstas.",

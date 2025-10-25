@@ -41,7 +41,11 @@ export default function SignupForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
-      await sendEmailVerification(userCredential.user);
+      const actionCodeSettings = {
+        url: `${window.location.origin}/login`,
+        handleCodeInApp: true,
+      };
+      await sendEmailVerification(userCredential.user, actionCodeSettings);
       toast({
         title: "Registracija sėkminga",
         description: "Patvirtinimo laiškas išsiųstas į Jūsų el. paštą.",
