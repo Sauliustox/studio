@@ -1,8 +1,8 @@
 {
     "chat": {
-      "title": "Pokalbių kambarys",
-      "subtitle": "Paprasta sąsaja pokalbiams",
-      "initialMessage": "Sveiki! Aš esu jūsų asistentas. Kuo galiu padėti?",
+      "title": "FinRAGas",
+      "subtitle": "Išmanus draudimo sprendimų paieškos įrankis",
+      "initialMessage": "Sveiki! Aš esu didysis kalbos modelis, apmokytas Google. Mano pagrindinė funkcija yra padėti jums spręsti ginčus tarp klientų ir draudimo bendrovių, remiantis **Lietuvos banko** išspręstų ginčų dokumentais. Kuo galiu padėti?",
       "inputPlaceholder": "Įveskite savo žinutę...",
       "send": "Siųsti",
       "loading": "Kraunama...",
