@@ -5,6 +5,11 @@ import { sendMessage } from '@/app/actions';
 import ChatMessages from './chat-messages';
 import ChatInput from './chat-input';
 import { useTranslation } from 'react-i18next';
+import { useAuth, useUser } from '@/firebase';
+import { signOut } from 'firebase/auth';
+import Link from 'next/link';
+import { Button } from '../ui/button';
+import { LogOut } from 'lucide-react';
 
 export interface Message {
   id: string;
@@ -13,6 +18,8 @@ export interface Message {
 }
 
 export default function ChatLayout() {
+  const { user, loading } = useUser();
+  const auth = useAuth();
   const [messages, setMessages] = useState<Message[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +67,11 @@ export default function ChatLayout() {
     }
   };
 
-  if (!isClient) {
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
+
+  if (!isClient || loading) {
     return (
       <div className="flex h-full w-full max-w-4xl flex-col items-center justify-center rounded-xl border bg-card shadow-2xl shadow-primary/10">
         <p>Kraunama...</p>
@@ -75,11 +86,23 @@ export default function ChatLayout() {
           <h1 className="text-xl font-bold font-headline text-foreground">{t('chat.title')}</h1>
           <p className="font-normal font-body text-foreground text-sm">{t('chat.subtitle')}</p>
         </div>
-        {sessionId && (
-            <div className="text-xs text-muted-foreground">
-                {t('chat.sessionId')}: <span className="font-mono">{sessionId.substring(0, 8)}...</span>
-            </div>
-        )}
+        <div className='flex items-center gap-4'>
+          {user ? (
+            <Button onClick={handleLogout} variant="ghost" size="icon">
+              <LogOut className="h-5 w-5" />
+              <span className='sr-only'>{t('auth.logout')}</span>
+            </Button>
+          ) : (
+            <Button asChild variant="outline">
+              <Link href="/login">{t('auth.login.button')}</Link>
+            </Button>
+          )}
+          {sessionId && (
+              <div className="text-xs text-muted-foreground">
+                  {t('chat.sessionId')}: <span className="font-mono">{sessionId.substring(0, 8)}...</span>
+              </div>
+          )}
+        </div>
       </header>
       <ChatMessages messages={messages} isLoading={isLoading} />
       <ChatInput onSend={handleSend} isLoading={isLoading} />
