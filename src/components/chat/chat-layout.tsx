@@ -83,7 +83,7 @@ export default function ChatLayout() {
     <div className="flex h-full w-full max-w-4xl flex-col rounded-xl border bg-card shadow-2xl shadow-primary/10">
       <header className="flex items-center justify-between rounded-t-xl border-b p-4">
         <div>
-          <h1 className="text-xl font-bold font-headline text-foreground">Pokalbis</h1>
+          <h1 className="text-xl font-bold font-headline text-foreground">FinRAGas</h1>
           <p className="font-normal font-body text-foreground text-sm">Jūsų asistentas</p>
         </div>
         <div className='flex items-center gap-4'>
