@@ -1,47 +1,58 @@
 {
-    "chat": {
-      "title": "Chat Room",
-      "subtitle": "A simple interface for conversations",
-      "initialMessage": "Hello! I am your assistant. How can I help you?",
-      "inputPlaceholder": "Enter your message...",
-      "send": "Send",
-      "loading": "Loading...",
-      "sessionId": "Session ID"
+{
+  "chat": {
+    "title": "AI Assistant",
+    "subtitle": "Ask me anything!",
+    "inputPlaceholder": "Type your message...",
+    "initialMessage": "Hello! How can I help you today?",
+    "send": "Send",
+    "loading": "Loading...",
+    "sessionId": "Session ID"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "logout": "Log Out",
+    "login": {
+      "title": "Login",
+      "description": "Enter your credentials to access your account.",
+      "button": "Log In",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign Up",
+      "successTitle": "Login Successful",
+      "errorTitle": "Login Failed",
+      "errorDescription": "Incorrect email or password. Please try again.",
+      "verificationErrorTitle": "Email Not Verified",
+      "verificationErrorDescription": "Please verify your email address before logging in. Check your inbox for a verification link."
     },
-    "auth": {
-        "email": "Email",
-        "password": "Password",
-        "logout": "Log out",
-        "login": {
-            "title": "Login",
-            "description": "Enter your email and password to log in.",
-            "button": "Log in",
-            "noAccount": "Don't have an account?",
-            "signUpLink": "Sign up",
-            "successTitle": "Successfully logged in!",
-            "errorTitle": "Login Error",
-            "errorDescription": "Please check your email and password.",
-            "verificationErrorTitle": "Email not verified",
-            "verificationErrorDescription": "Please verify your email before logging in. Check your inbox."
-        },
-        "signup": {
-            "title": "Sign up",
-            "description": "Fill out the form to create a new account.",
-            "button": "Sign up",
-            "haveAccount": "Already have an account?",
-            "signInLink": "Log in",
-            "successTitle": "Account created successfully!",
-            "successDescription": "We have sent you a verification email. Please check your inbox.",
-            "errorTitle": "Signup Error"
-        }
+    "signup": {
+      "title": "Create an Account",
+      "description": "Enter your email and password to sign up.",
+      "button": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign In",
+      "successTitle": "Registration Successful",
+      "successDescription": "A verification email has been sent to your inbox. Please verify your account.",
+      "errorTitle": "Registration Failed"
     },
-    "error": {
-        "serverConfig": "Server configuration error. Missing WEBHOOK_URL or authorization token.",
-        "webhookResponseError": "Error sending request to Webhook. Check server logs.",
-        "emptyResponse": "Received an empty response from the server.",
-        "parsingError": "Error parsing server response.",
-        "connectionError": "Could not connect to the server.",
-        "processingError": "An unexpected error occurred while processing your request.",
-        "emptyAnswer": "Sorry, no answer was received."
+    "verifyEmail": {
+      "title": "Verify Your Email",
+      "description": "A verification link has been sent to {{email}}. Please check your inbox.",
+      "instructions": "If you don't see the email, check your spam folder or click the button below to resend it.",
+      "resendButton": "Resend Verification Email",
+      "resendSuccessTitle": "Email Sent",
+      "resendSuccessDescription": "A new verification email has been sent to your address.",
+      "resendErrorTitle": "Failed to Send",
+      "resendErrorDescription": "Something went wrong. Please try again in a few moments."
     }
+  },
+  "error": {
+    "serverConfig": "Server is not configured correctly. Please contact support.",
+    "webhookResponseError": "The server returned an error. Please try again later.",
+    "emptyResponse": "The server returned an empty response.",
+    "parsingError": "Failed to parse the server's response.",
+    "connectionError": "Could not connect to the server. Please check your internet connection.",
+    "processingError": "An unexpected error occurred while processing your request.",
+    "emptyAnswer": "Sorry, I couldn't generate a response. Please try again."
+  }
 }

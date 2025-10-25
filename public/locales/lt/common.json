@@ -1,47 +1,58 @@
 {
-    "chat": {
-      "title": "FinRAGas",
-      "subtitle": "Išmanus draudimo sprendimų paieškos įrankis",
-      "initialMessage": "Sveiki! Aš esu didysis kalbos modelis, apmokytas Google. Mano pagrindinė funkcija yra padėti jums spręsti ginčus tarp klientų ir draudimo bendrovių, remiantis **Lietuvos banko** išspręstų ginčų dokumentais. Kuo galiu padėti?",
-      "inputPlaceholder": "Įveskite savo žinutę...",
-      "send": "Siųsti",
-      "loading": "Kraunama...",
-      "sessionId": "Sesijos ID"
+{
+  "chat": {
+    "title": "AI Asistentas",
+    "subtitle": "Klauskite manęs bet ko!",
+    "inputPlaceholder": "Įveskite savo žinutę...",
+    "initialMessage": "Sveiki! Kaip galiu jums padėti šiandien?",
+    "send": "Siųsti",
+    "loading": "Kraunama...",
+    "sessionId": "Sesijos ID"
+  },
+  "auth": {
+    "email": "El. paštas",
+    "password": "Slaptažodis",
+    "logout": "Atsijungti",
+    "login": {
+      "title": "Prisijungimas",
+      "description": "Įveskite savo prisijungimo duomenis, kad pasiektumėte savo paskyrą.",
+      "button": "Prisijungti",
+      "noAccount": "Neturite paskyros?",
+      "signUpLink": "Užsiregistruoti",
+      "successTitle": "Sėkmingai prisijungėte",
+      "errorTitle": "Prisijungti nepavyko",
+      "errorDescription": "Neteisingas el. paštas arba slaptažodis. Bandykite dar kartą.",
+      "verificationErrorTitle": "El. paštas nepatvirtintas",
+      "verificationErrorDescription": "Prašome patvirtinti savo el. pašto adresą prieš jungiantis. Patikrinkite savo pašto dėžutę."
     },
-    "auth": {
-        "email": "El. paštas",
-        "password": "Slaptažodis",
-        "logout": "Atsijungti",
-        "login": {
-            "title": "Prisijungimas",
-            "description": "Įveskite savo el. paštą ir slaptažodį, kad prisijungtumėte.",
-            "button": "Prisijungti",
-            "noAccount": "Neturite paskyros?",
-            "signUpLink": "Registruotis",
-            "successTitle": "Sėkmingai prisijungėte!",
-            "errorTitle": "Prisijungimo klaida",
-            "errorDescription": "Patikrinkite savo el. paštą ir slaptažodį.",
-            "verificationErrorTitle": "El. paštas nepatvirtintas",
-            "verificationErrorDescription": "Prašome patvirtinti savo el. paštą prieš prisijungiant. Patikrinkite savo pašto dėžutę."
-        },
-        "signup": {
-            "title": "Registracija",
-            "description": "Užpildykite formą, kad sukurtumėte naują paskyrą.",
-            "button": "Registruotis",
-            "haveAccount": "Jau turite paskyrą?",
-            "signInLink": "Prisijungti",
-            "successTitle": "Paskyra sėkmingai sukurta!",
-            "successDescription": "Išsiuntėme patvirtinimo laišką. Prašome patikrinti savo pašto dėžutę.",
-            "errorTitle": "Registracijos klaida"
-        }
+    "signup": {
+      "title": "Sukurti paskyrą",
+      "description": "Įveskite savo el. paštą ir slaptažodį, kad užsiregistruotumėte.",
+      "button": "Registruotis",
+      "haveAccount": "Jau turite paskyrą?",
+      "signInLink": "Prisijungti",
+      "successTitle": "Registracija sėkminga",
+      "successDescription": "Patvirtinimo laiškas buvo išsiųstas į jūsų el. pašto dėžutę. Prašome patvirtinti savo paskyrą.",
+      "errorTitle": "Registracija nepavyko"
     },
-    "error": {
-        "serverConfig": "Serverio konfigūracijos klaida. Trūksta WEBHOOK_URL arba autorizacijos rakto.",
-        "webhookResponseError": "Klaida siunčiant užklausą į Webhook. Patikrinkite serverio log'us.",
-        "emptyResponse": "Gautas tuščias atsakymas iš serverio.",
-        "parsingError": "Klaida apdorojant serverio atsakymą.",
-        "connectionError": "Nepavyko prisijungti prie serverio.",
-        "processingError": "Įvyko nenumatyta klaida apdorojant jūsų užklausą.",
-        "emptyAnswer": "Atsiprašome, negavome atsakymo."
+    "verifyEmail": {
+      "title": "Patvirtinkite savo el. paštą",
+      "description": "Patvirtinimo nuoroda buvo išsiųsta adresu {{email}}. Prašome patikrinti savo pašto dėžutę.",
+      "instructions": "Jei nematote laiško, patikrinkite šlamšto (spam) aplanką arba paspauskite mygtuką žemiau, kad išsiųstumėte laišką iš naujo.",
+      "resendButton": "Siųsti patvirtinimo laišką iš naujo",
+      "resendSuccessTitle": "Laiškas išsiųstas",
+      "resendSuccessDescription": "Naujas patvirtinimo laiškas buvo išsiųstas jūsų adresu.",
+      "resendErrorTitle": "Išsiųsti nepavyko",
+      "resendErrorDescription": "Kažkas nutiko. Prašome pabandyti dar kartą po kelių akimirkų."
     }
+  },
+  "error": {
+    "serverConfig": "Serveris sukonfigūruotas neteisingai. Prašome susisiekti su palaikymo komanda.",
+    "webhookResponseError": "Serveris grąžino klaidą. Prašome pabandyti vėliau.",
+    "emptyResponse": "Serveris grąžino tuščią atsakymą.",
+    "parsingError": "Nepavyko apdoroti serverio atsakymo.",
+    "connectionError": "Nepavyko prisijungti prie serverio. Patikrinkite interneto ryšį.",
+    "processingError": "Apdorojant jūsų užklausą įvyko netikėta klaida.",
+    "emptyAnswer": "Atsiprašau, nepavyko sugeneruoti atsakymo. Bandykite dar kartą."
+  }
 }
