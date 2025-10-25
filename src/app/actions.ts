@@ -6,7 +6,7 @@ export async function sendMessage(sessionId: string, chatInput: string): Promise
 
   if (!webhookUrl || !bearerToken) {
     console.error('Webhook URL or Bearer Token is not configured in environment variables.');
-    return { error: 'error.serverConfig' };
+    return { error: 'Serverio konfigūracijos klaida.' };
   }
   
   try {
@@ -23,12 +23,12 @@ export async function sendMessage(sessionId: string, chatInput: string): Promise
     if (!res.ok) {
       const errorText = await res.text();
       console.error('Webhook error:', res.status, errorText);
-      return { error: 'error.webhookResponseError' };
+      return { error: 'Klaida gaunant atsakymą iš serverio.' };
     }
 
     const responseText = await res.text();
     if (!responseText) {
-        return { error: 'error.emptyResponse' };
+        return { error: 'Gautas tuščias atsakymas.' };
     }
 
     try {
@@ -46,8 +46,8 @@ export async function sendMessage(sessionId: string, chatInput: string): Promise
   } catch (error) {
     console.error('Error sending message:', error);
     if (error instanceof SyntaxError) {
-        return { error: 'error.parsingError' };
+        return { error: 'Klaida apdorojant atsakymą.' };
     }
-    return { error: 'error.connectionError' };
+    return { error: 'Prisijungimo prie serverio klaida.' };
   }
 }

@@ -9,9 +9,7 @@ import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { LogOut } from 'lucide-react';
-import { useTranslation } from '@/app/i18n/client';
 import { useRouter } from 'next/navigation';
-import { fallbackLng } from '@/app/i18n/settings';
 
 export interface Message {
   id: string;
@@ -26,8 +24,6 @@ export default function ChatLayout() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -37,10 +33,10 @@ export default function ChatLayout() {
       {
         id: crypto.randomUUID(),
         sender: 'agent',
-        text: t('chat.initialMessage'),
+        text: 'Laba diena! Aš esu jūsų asistentas. Kuo galiu padėti?',
       },
     ]);
-  }, [t]);
+  }, []);
 
 
   const handleSend = async (text: string) => {
@@ -54,16 +50,16 @@ export default function ChatLayout() {
       const result = await sendMessage(sessionId, text);
       let agentText: string;
       if (result.error) {
-        agentText = t(result.error, { ns: 'common', defaultValue: "Įvyko klaida." });
+        agentText = "Atsiprašome, įvyko klaida.";
       } else if (!result.text) {
-        agentText = t('error.emptyAnswer');
+        agentText = "Atsiprašome, negavau atsakymo.";
       } else {
         agentText = result.text;
       }
       const agentMessage: Message = { id: crypto.randomUUID(), sender: 'agent', text: agentText };
       setMessages((prev) => [...prev, agentMessage]);
     } catch (e) {
-      const errorMessage: Message = { id: crypto.randomUUID(), sender: 'agent', text: t('error.processingError') };
+      const errorMessage: Message = { id: crypto.randomUUID(), sender: 'agent', text: "Atsiprašome, įvyko apdorojimo klaida." };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -78,7 +74,7 @@ export default function ChatLayout() {
   if (!isClient || loading) {
     return (
       <div className="flex h-full w-full max-w-4xl flex-col items-center justify-center rounded-xl border bg-card shadow-2xl shadow-primary/10">
-        <p>{t('chat.loading')}</p>
+        <p>Kraunasi...</p>
       </div>
     );
   }
@@ -87,23 +83,23 @@ export default function ChatLayout() {
     <div className="flex h-full w-full max-w-4xl flex-col rounded-xl border bg-card shadow-2xl shadow-primary/10">
       <header className="flex items-center justify-between rounded-t-xl border-b p-4">
         <div>
-          <h1 className="text-xl font-bold font-headline text-foreground">{t('chat.title')}</h1>
-          <p className="font-normal font-body text-foreground text-sm">{t('chat.subtitle')}</p>
+          <h1 className="text-xl font-bold font-headline text-foreground">Pokalbis</h1>
+          <p className="font-normal font-body text-foreground text-sm">Jūsų asistentas</p>
         </div>
         <div className='flex items-center gap-4'>
           {user ? (
             <Button onClick={handleLogout} variant="ghost" size="icon">
               <LogOut className="h-5 w-5" />
-              <span className='sr-only'>{t('auth.logout')}</span>
+              <span className='sr-only'>Atsijungti</span>
             </Button>
           ) : (
             <Button asChild variant="outline">
-              <Link href={`/login`}>{t('auth.login.button')}</Link>
+              <Link href={`/login`}>Prisijungti</Link>
             </Button>
           )}
           {sessionId && (
               <div className="text-xs text-muted-foreground">
-                  {t('chat.sessionId')}: <span className="font-mono">{sessionId.substring(0, 8)}...</span>
+                  Sesijos ID: <span className="font-mono">{sessionId.substring(0, 8)}...</span>
               </div>
           )}
         </div>

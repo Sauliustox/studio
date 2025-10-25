@@ -8,15 +8,11 @@ import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
-import { useTranslation } from '@/app/i18n/client';
-import { fallbackLng } from '../i18n/settings';
 
 export default function VerifyEmailPage() {
   const auth = useAuth();
   const { user, loading } = useUser();
   const router = useRouter();
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
@@ -35,15 +31,15 @@ export default function VerifyEmailPage() {
     try {
       await sendEmailVerification(user);
       toast({
-        title: t('auth.verifyEmail.resendSuccessTitle'),
-        description: t('auth.verifyEmail.resendSuccessDescription'),
+        title: "Laiškas išsiųstas",
+        description: "Patvirtinimo laiškas buvo sėkmingai išsiųstas.",
       });
     } catch (error) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: t('auth.verifyEmail.resendErrorTitle'),
-        description: t('auth.verifyEmail.resendErrorDescription'),
+        title: "Klaida",
+        description: "Nepavyko išsiųsti patvirtinimo laiško. Bandykite dar kartą.",
       });
     } finally {
       setIsSending(false);
@@ -53,7 +49,7 @@ export default function VerifyEmailPage() {
   if (loading || !user || user.emailVerified) {
     return (
       <main className="flex h-[100dvh] flex-col items-center justify-center bg-background p-4">
-        <p>{t('chat.loading')}</p>
+        <p>Kraunasi...</p>
       </main>
     );
   }
@@ -62,21 +58,21 @@ export default function VerifyEmailPage() {
     <main className="flex h-screen flex-col items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>{t('auth.verifyEmail.title')}</CardTitle>
+          <CardTitle>Patvirtinkite savo el. paštą</CardTitle>
           <CardDescription>
-            {t('auth.verifyEmail.description', { email: user.email })}
+            Išsiuntėme patvirtinimo laišką į {user.email}.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <p className="text-sm text-muted-foreground">
-            {t('auth.verifyEmail.instructions')}
+            Jei negavote laiško, patikrinkite šlamšto aplanką arba išsiųskite laišką iš naujo.
           </p>
           <Button onClick={handleResendEmail} disabled={isSending}>
             {isSending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {t('auth.verifyEmail.resendButton')}
+            Siųsti laišką iš naujo
           </Button>
           <Button variant="outline" onClick={() => auth.signOut().then(() => router.push(`/login`))}>
-            {t('auth.logout')}
+            Atsijungti
           </Button>
         </CardContent>
       </Card>

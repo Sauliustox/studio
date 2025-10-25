@@ -19,8 +19,6 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslation } from '@/app/i18n/client';
-import { fallbackLng } from '@/app/i18n/settings';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Neteisingas el. pašto formatas.' }),
@@ -28,8 +26,6 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
   const auth = useAuth();
   const { toast } = useToast();
   const router = useRouter();
@@ -52,15 +48,15 @@ export default function LoginForm() {
       }
       
       toast({
-        title: t('auth.login.successTitle'),
+        title: "Sėkmingai prisijungėte",
       });
       router.push(`/`);
     } catch (error: any) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: t('auth.login.errorTitle'),
-        description: t('auth.login.errorDescription'),
+        title: "Prisijungimo klaida",
+        description: "Neteisingas el. paštas arba slaptažodis.",
       });
     }
   };
@@ -73,7 +69,7 @@ export default function LoginForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('auth.email')}</FormLabel>
+              <FormLabel>El. paštas</FormLabel>
               <FormControl>
                 <Input placeholder="jūsų@el.paštas" {...field} />
               </FormControl>
@@ -86,7 +82,7 @@ export default function LoginForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('auth.password')}</FormLabel>
+              <FormLabel>Slaptažodis</FormLabel>
               <FormControl>
                 <Input type="password" placeholder="••••••••" {...field} />
               </FormControl>
@@ -96,10 +92,10 @@ export default function LoginForm() {
         />
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {t('auth.login.button')}
+          Prisijungti
         </Button>
         <p className="text-center text-sm text-muted-foreground">
-          {t('auth.login.noAccount')} <Link href={`/signup`} className="underline hover:text-primary">{t('auth.login.signUpLink')}</Link>
+          Neturite paskyros? <Link href={`/signup`} className="underline hover:text-primary">Užsiregistruokite</Link>
         </p>
       </form>
     </Form>

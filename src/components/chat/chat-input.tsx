@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SendHorizonal, Loader2 } from 'lucide-react';
-import { useTranslation } from '@/app/i18n/client';
-import { fallbackLng } from '@/app/i18n/settings';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -14,8 +12,6 @@ interface ChatInputProps {
 
 export default function ChatInput({ onSend, isLoading }: ChatInputProps) {
   const [text, setText] = useState('');
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,7 +25,7 @@ export default function ChatInput({ onSend, isLoading }: ChatInputProps) {
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
         <Input
           type="text"
-          placeholder={t('chat.inputPlaceholder')}
+          placeholder="Įveskite žinutę..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           disabled={isLoading}
@@ -42,7 +38,7 @@ export default function ChatInput({ onSend, isLoading }: ChatInputProps) {
           ) : (
             <SendHorizonal className="h-5 w-5" />
           )}
-          <span className="sr-only">{t('chat.send')}</span>
+          <span className="sr-only">Siųsti</span>
         </Button>
       </form>
     </div>

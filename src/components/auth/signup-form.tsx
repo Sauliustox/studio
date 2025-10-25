@@ -19,8 +19,6 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslation } from '@/app/i18n/client';
-import { fallbackLng } from '@/app/i18n/settings';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Neteisingas el. pašto formatas.' }),
@@ -28,8 +26,6 @@ const formSchema = z.object({
 });
 
 export default function SignupForm() {
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
   const auth = useAuth();
   const { toast } = useToast();
   const router = useRouter();
@@ -47,15 +43,15 @@ export default function SignupForm() {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       await sendEmailVerification(userCredential.user);
       toast({
-        title: t('auth.signup.successTitle'),
-        description: t('auth.signup.successDescription'),
+        title: "Registracija sėkminga",
+        description: "Patvirtinimo laiškas išsiųstas į Jūsų el. paštą.",
       });
       router.push(`/verify-email`);
     } catch (error: any) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: t('auth.signup.errorTitle'),
+        title: "Registracijos klaida",
         description: error.message,
       });
     }
@@ -69,7 +65,7 @@ export default function SignupForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('auth.email')}</FormLabel>
+              <FormLabel>El. paštas</FormLabel>
               <FormControl>
                 <Input placeholder="jūsų@el.paštas" {...field} />
               </FormControl>
@@ -82,7 +78,7 @@ export default function SignupForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('auth.password')}</FormLabel>
+              <FormLabel>Slaptažodis</FormLabel>
               <FormControl>
                 <Input type="password" placeholder="••••••••" {...field} />
               </FormControl>
@@ -92,10 +88,10 @@ export default function SignupForm() {
         />
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {t('auth.signup.button')}
+          Registruotis
         </Button>
         <p className="text-center text-sm text-muted-foreground">
-          {t('auth.signup.haveAccount')} <Link href={`/login`} className="underline hover:text-primary">{t('auth.signup.signInLink')}</Link>
+          Jau turite paskyrą? <Link href={`/login`} className="underline hover:text-primary">Prisijunkite</Link>
         </p>
       </form>
     </Form>

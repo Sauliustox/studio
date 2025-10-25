@@ -10,7 +10,6 @@ const ptSans = PT_Sans({
   variable: '--font-pt-sans',
 });
 
-
 export const metadata: Metadata = {
   title: 'Webhook Chat',
   description: 'A simple chat interface for a webhook.',
