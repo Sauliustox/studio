@@ -11,7 +11,7 @@ import { Button } from '../ui/button';
 import { LogOut } from 'lucide-react';
 import { useTranslation } from '@/app/i18n/client';
 import { useRouter } from 'next/navigation';
-import { useI18n } from '@/app/i18n/provider';
+import { fallbackLng } from '@/app/i18n/settings';
 
 export interface Message {
   id: string;
@@ -23,10 +23,10 @@ export default function ChatLayout() {
   const { user, loading } = useUser();
   const auth = useAuth();
   const router = useRouter();
-  const { lng } = useI18n();
   const [messages, setMessages] = useState<Message[]>([]);
   const [sessionId, setSessionId] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
+  const lng = fallbackLng;
   const { t } = useTranslation(lng, 'common');
   const [isClient, setIsClient] = useState(false);
 
@@ -72,7 +72,7 @@ export default function ChatLayout() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push(`/${lng}/login`);
+    router.push(`/login`);
   };
 
   if (!isClient || loading) {
@@ -98,7 +98,7 @@ export default function ChatLayout() {
             </Button>
           ) : (
             <Button asChild variant="outline">
-              <Link href={`/${lng}/login`}>{t('auth.login.button')}</Link>
+              <Link href={`/login`}>{t('auth.login.button')}</Link>
             </Button>
           )}
           {sessionId && (

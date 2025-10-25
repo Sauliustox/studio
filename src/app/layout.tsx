@@ -3,9 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { dir } from 'i18next'
-import { languages } from './i18n/settings';
 import { PT_Sans } from 'next/font/google';
-import { I18nProvider } from './i18n/provider';
+import { fallbackLng } from './i18n/settings';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -19,21 +18,12 @@ export const metadata: Metadata = {
   description: 'A simple chat interface for a webhook.',
 };
 
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }))
-}
-
 export default function RootLayout({
   children,
-  params: {
-    lng
-  }
 }: Readonly<{
   children: React.ReactNode;
-  params: {
-    lng: string;
-  }
 }>) {
+  const lng = fallbackLng;
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <head>
@@ -43,10 +33,8 @@ export default function RootLayout({
       </head>
       <body className={`${ptSans.variable} font-body antialiased`}>
         <FirebaseClientProvider>
-          <I18nProvider lng={lng}>
-            {children}
-            <Toaster />
-          </I18nProvider>
+          {children}
+          <Toaster />
         </FirebaseClientProvider>
       </body>
     </html>

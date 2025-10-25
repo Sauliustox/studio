@@ -5,6 +5,7 @@ import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { getOptions } from './settings'
 
+// on client side the normal singleton is ok
 i18next
   .use(initReactI18next)
   .use(resourcesToBackend((language: string, namespace: string) => import(`../../../public/locales/${language}/${namespace}.json`)))
@@ -13,12 +14,19 @@ i18next
     lng: undefined, // let detect the language on client side
     detection: {
       order: ['path', 'htmlTag', 'cookie', 'navigator'],
+    },
+    react: {
+      useSuspense: false,
     }
   })
 
+const runsOnServerSide = typeof window === 'undefined'
+
 export function useTranslation(lng: string, ns?: string, options?: { keyPrefix?: string }) {
-  if (i18next.resolvedLanguage !== lng) {
-    i18next.changeLanguage(lng)
+  const ret = useTranslationOrg(ns, options)
+  const { i18n } = ret
+  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
+    i18n.changeLanguage(lng)
   }
-  return useTranslationOrg(ns, options)
+  return ret
 }

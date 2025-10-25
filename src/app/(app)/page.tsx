@@ -5,13 +5,11 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '@/firebase';
 import ChatLayout from '@/components/chat/chat-layout';
 import { useTranslation } from '@/app/i18n/client';
-import { fallbackLng } from './i18n/settings';
 
 export default function Home() {
   const { user, loading } = useUser();
   const router = useRouter();
-  const lng = fallbackLng;
-  const { t } = useTranslation(lng, 'common');
+  const { t } = useTranslation('lt', 'common');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SendHorizonal, Loader2 } from 'lucide-react';
 import { useTranslation } from '@/app/i18n/client';
-import { useI18n } from '@/app/i18n/provider';
+import { fallbackLng } from '@/app/i18n/settings';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -14,7 +14,7 @@ interface ChatInputProps {
 
 export default function ChatInput({ onSend, isLoading }: ChatInputProps) {
   const [text, setText] = useState('');
-  const { lng } = useI18n();
+  const lng = fallbackLng;
   const { t } = useTranslation(lng, 'common');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

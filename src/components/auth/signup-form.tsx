@@ -20,7 +20,7 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from '@/app/i18n/client';
-import { useI18n } from '@/app/i18n/provider';
+import { fallbackLng } from '@/app/i18n/settings';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Neteisingas el. pašto formatas.' }),
@@ -28,7 +28,7 @@ const formSchema = z.object({
 });
 
 export default function SignupForm() {
-  const { lng } = useI18n();
+  const lng = fallbackLng;
   const { t } = useTranslation(lng, 'common');
   const auth = useAuth();
   const { toast } = useToast();
@@ -50,7 +50,7 @@ export default function SignupForm() {
         title: t('auth.signup.successTitle'),
         description: t('auth.signup.successDescription'),
       });
-      router.push(`/${lng}/login`);
+      router.push(`/login`);
     } catch (error: any) {
       console.error(error);
       toast({
@@ -95,7 +95,7 @@ export default function SignupForm() {
           {t('auth.signup.button')}
         </Button>
         <p className="text-center text-sm text-muted-foreground">
-          {t('auth.signup.haveAccount')} <Link href={`/${lng}/login`} className="underline hover:text-primary">{t('auth.signup.signInLink')}</Link>
+          {t('auth.signup.haveAccount')} <Link href={`/login`} className="underline hover:text-primary">{t('auth.signup.signInLink')}</Link>
         </p>
       </form>
     </Form>
